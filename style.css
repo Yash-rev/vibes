@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&display=swap');
+
+#entry-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fdf6e3; /* Matches your lofi theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1.5s ease, visibility 1.5s;
+    text-align: center;
+    padding: 20px;
+}
+
+.letter-content {
+    max-width: 600px;
+    animation: fadeIn 2s ease-in;
+}
+
+.cute-font {
+    color: #8b5e3c;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+h1.cute-font {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+}
+
+p.cute-font {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2rem;
+}
+
+#enter-btn {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #ffb7b2; /* Soft pink */
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s;
+    margin-top: 30px;
+}
+
+#enter-btn:hover {
+    transform: scale(1.05);
+    background-color: #ff9aa2;
+}
+
+/* Class to fade out the overlay */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+:root {
+  --transition-speed: 0.8s;
+  --bg-lofi: #fdf6e3;
+  --bg-cyber: #0d0221;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-lofi);
+  transition: background-color var(--transition-speed);
+}
+
+
+
+.window-container {
+  position: fixed;
+  top: 18%; 
+  left: 42%; 
+  width: 25%;
+  height: 35%;
+  z-index: 1; 
+  transform: skewY(10deg); 
+  overflow: hidden;
+}
+
+.room-container {
+  position: relative;
+  width: 90vmin;
+  z-index: 2; 
+  pointer-events: none; 
+}
+
+.room-shell {
+  width: 100%;
+  pointer-events: auto;
+}
+
+.interactive-obj {
+  pointer-events: auto; 
+  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.2));
+}
+
+
+[data-theme="lofi"] { 
+  --current-bg: linear-gradient(135deg, #fdf6e3 0%, #ffecd2 100%); 
+}
+
+[data-theme="cyber"] { 
+  --current-bg: linear-gradient(135deg, #0d0221 0%, #240b36 100%); 
+  /* Adding a subtle neon glow to the body */
+  box-shadow: inset 0 0 100px rgba(255, 0, 255, 0.1);
+}
+
+body {
+  background: var(--current-bg); /* Change background-color to background */
+  background-attachment: fixed;
+  transition: background 1.5s ease-in-out;
+}
+
+
+#experience-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.window-view {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: background-image var(--transition-speed);
+}
+
+
+.interactive-obj {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.interactive-obj:hover {
+  transform: scale(1.1) translateY(-5px);
+}
+
+
+
+#record-player { 
+    bottom: 30%; 
+    left: 12%; 
+    width: 16%; 
+}
+
+/* Container for the lamp to hold the glow positioning */
+#lamp-wrapper {
+    position: absolute;
+    bottom: 47%; 
+    left: 43%; 
+    width: 9%; 
+    z-index: 11;
+}
+
+
+#lamp-wrapper.glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400%; 
+    height: 400%;
+    /* Use a softer radial gradient */
+    background: radial-gradient(circle, rgba(255, 255, 180, 0.5) 0%, rgba(255, 255, 150, 0) 70%);
+    pointer-events: none;
+    z-index: 11;
+    filter: blur(20px);
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* Hide glow when the class is not present */
+#lamp-wrapper::before {
+    content: '';
+    opacity: 0;
+}
+#lamp { 
+    bottom: 47%; 
+    left: 43%; 
+    width: 70%; 
+}
+
+
+#computer-zone { 
+   bottom: 20%; 
+   left: 65%; 
+   width: 20%;
+}
+
+#plant { 
+   bottom: 38%; 
+   left: 26%; 
+   width: 15%;
+}
+
+#carpet { 
+   bottom: auto; 
+   left: -106%; 
+   width: 350%;
+}
+
+
+
+#visualizer {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 70%;
+  height: 30%;
+  pointer-events: none;
+}
+
+/* Dark Mode Effect */
+.light-off {
+  filter: brightness(0.3) contrast(1.2) !important;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+}
+.modal.open { display: flex; }
+
+.room-container.light-off {
+  filter: brightness(0.4) contrast(1.2) saturate(0.8) !important;
+}

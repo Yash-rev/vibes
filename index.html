@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vibe Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="entry-overlay">
+    <div class="letter-content">
+        <h1 class="cute-font">Happy Valentine's Day</h1>
+        <p class="cute-font">
+            I made this room while thinking of you. Arjoo <br>
+            I kept imagining us here together today, even though we couldn't be. <br>
+            I pictured us just losing track of time, enjoying the music <br>
+            and the scenery side by side.
+        </p>
+        <button id="enter-btn">Step Inside</button>
+    </div>
+</div>
+    <audio class="chill" loop preload="auto">
+        <source src="lovers_rock.mp3" type="audio/mpeg">
+    </audio>
+    <audio class="rock" loop preload="auto">
+        <source src="chill.mp3" type="audio/mpeg">
+    </audio>
+    <main id="experience-wrapper" data-theme="lofi">
+        
+        <div class="window-container">
+            <div class="window-view"></div>
+        </div>
+
+        <section class="room-container">
+            <img src="base-room.png" class="room-shell" alt="Room">
+
+            <div class="furniture">
+                <img src="record-player.png" id="record-player" class="interactive-obj" title="Switch Vibe">
+                <div id="lamp-wrapper">
+    <img src="lamp.png" id="lamp" class="interactive-obj" title="Toggle Light">
+           <img src="carpet.png" id="carpet" class="interactive-obj" title="carpet">
+</div>
+                
+                   <img src="computer.png" id="computer-zone" class="interactive-obj" title="Check Portfolio">
+                <img src="plant.png" id="plant" class="interactive-obj" title="Check Portfolio">
+                    <canvas id="visualizer"></canvas>
+                
+            </div>
+        </section>
+
+        <div id="portfolio-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2 class="glitch-text" data-text="SYSTEM PORTFOLIO">SYSTEM PORTFOLIO</h2>
+                <div class="modal-body">
+                    <p>Welcome to my interactive space.</p>
+                    <ul class="project-list">
+                        <li><a href="#">Project One</a></li>
+                        <li><a href="#">Project Two</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
