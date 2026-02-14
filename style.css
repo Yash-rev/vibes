@@ -368,7 +368,7 @@ body {
     display: none; /* Hidden by default */
     position: absolute;
     top: 60%; /* Adjust based on where your computer is */
-    left: 60%;
+    left: 65%;
     z-index: 100; 
     width: 1000px;/* Ensures it sits on top of the room-shell */
     pointer-events: none; /* Allows Arjoo to click things "behind" the text */
@@ -385,7 +385,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     color: #0ff;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 1rem;
     letter-spacing: 2px;
     /* The "Neon" Glow */
     text-shadow: 
