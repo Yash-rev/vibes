@@ -27,6 +27,17 @@ const RoomController = {
     audioCtx: null,
 
     init() {
+        // Add this to create floating hearts on the entry overlay
+const overlay = document.getElementById('entry-overlay');
+for (let i = 0; i < 15; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-bg';
+    heart.innerText = '❤';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 5 + 's';
+    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+    overlay.appendChild(heart);
+}
         this.audio.crossOrigin = "anonymous";
         this.audio.loop = true;
         this.setupVisualizer();
@@ -35,6 +46,8 @@ const RoomController = {
     },
 
     async updateRoom() {
+
+        
         const theme = this.state.themes[this.state.currentThemeIndex];
         
         // Update the theme attribute for CSS styling
@@ -83,6 +96,17 @@ const RoomController = {
     },
 
     bindEvents() {
+        document.getElementById('plant').addEventListener('click', () => {
+    for (let i = 0; i < 5; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'click-sparkle'; // Reuses your existing sparkle style
+        heart.innerText = '🌸';
+        heart.style.left = (event.pageX + (Math.random() - 0.5) * 50) + 'px';
+        heart.style.top = (event.pageY - 20) + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+    }
+});
         // Add this inside your RoomController.bindEvents or at the bottom
 document.getElementById('enter-btn').addEventListener('click', () => {
     const overlay = document.getElementById('entry-overlay');
@@ -157,3 +181,34 @@ rock.volume = 0.5
 
 
 document.addEventListener('DOMContentLoaded', () => RoomController.init());
+
+document.addEventListener('click', (e) => {
+    const sparkle = document.createElement('div');
+    sparkle.className = 'click-sparkle';
+    sparkle.style.left = `${e.pageX}px`;
+    sparkle.style.top = `${e.pageY}px`;
+    document.body.appendChild(sparkle);
+    
+    setTimeout(() => sparkle.remove(), 1000);
+});
+
+document.addEventListener('click', (e) => {
+    // Create the sparkle element
+    const sparkle = document.createElement('div');
+    sparkle.className = 'click-sparkle';
+    
+    // Position it at the mouse coordinates
+    sparkle.style.left = `${e.pageX}px`;
+    sparkle.style.top = `${e.pageY}px`;
+    
+    // Add a heart icon
+    sparkle.innerText = '❤';
+    
+    // Add to the body
+    document.body.appendChild(sparkle);
+    
+    // Remove from DOM after animation finishes (1 second)
+    setTimeout(() => {
+        sparkle.remove();
+    }, 1000);
+});

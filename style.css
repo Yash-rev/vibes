@@ -14,6 +14,30 @@
     transition: opacity 1.5s ease, visibility 1.5s;
     text-align: center;
     padding: 20px;
+    background: radial-gradient(circle, #2d1b2d 0%, #0d0221 100%);
+    overflow: hidden;
+}
+
+
+
+.heart-bg {
+    position: absolute;
+    color: rgba(255, 105, 180, 0.3);
+    font-size: 2rem;
+    animation: float 6s infinite ease-in-out;
+    z-index: 3;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* Cute Font Upgrade */
+.cute-font {
+    font-family: 'Dancing Script', cursive; /* Link this in your HTML head */
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
 }
 
 .letter-content {
@@ -260,4 +284,120 @@ body {
 
 .room-container.light-off {
   filter: brightness(0.4) contrast(1.2) saturate(0.8) !important;
+}
+
+#neon-heart {
+    position: absolute;
+    top: 13%;
+    right: -32%;
+    width: 109px;
+    filter: drop-shadow(0 0 10px #ff0077);
+    cursor: pointer;
+    animation: pulse 2s infinite;
+}
+
+.heart-svg {
+    fill: none;
+    stroke: #ff0077;
+    stroke-width: 2;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #ff0077); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 25px #ff66aa); }
+}
+
+/* Toggle for Cyber Theme */
+[data-theme="cyber"] #neon-heart {
+    filter: drop-shadow(0 0 10px #0ff);
+}
+[data-theme="cyber"] .heart-svg {
+    stroke: #0ff;
+}
+
+/* Adding a glass reflection to the window */
+.window-view::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    pointer-events: none;
+}
+
+/* Cyber City specific animation */
+[data-theme="cyber"] .window-view {
+    animation: city-glow 5s infinite alternate;
+}
+
+@keyframes city-glow {
+    from { filter: brightness(1) contrast(1); }
+    to { filter: brightness(1.2) contrast(1.1) saturate(1.2); }
+}
+
+/* Click Sparkle Style */
+.click-sparkle {
+    position: absolute;
+    pointer-events: none; /* Important: prevents the sparkle from blocking clicks */
+    color: #ff4d6d;
+    font-size: 1.5rem;
+    z-index: 9999;
+    user-select: none;
+    animation: sparkle-float 1s ease-out forwards;
+}
+
+/* Float Up and Fade Animation */
+@keyframes sparkle-float {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -150%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Adjust color for Cyber Theme */
+[data-theme="cyber"] + .click-sparkle, 
+[data-theme="cyber"] ~ .click-sparkle {
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+}
+
+.cyber-hologram {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 60%; /* Adjust based on where your computer is */
+    left: 60%;
+    z-index: 100; 
+    width: 1000px;/* Ensures it sits on top of the room-shell */
+    pointer-events: none; /* Allows Arjoo to click things "behind" the text */
+}
+
+/* This trigger matches your RoomController's theme switching */
+[data-theme="cyber"] .cyber-hologram {
+    display: flex;
+    flex-direction: column;
+    animation: holo-float 3s infinite ease-in-out;
+}
+
+.holo-text {
+    font-family: 'Courier New', Courier, monospace;
+    color: #0ff;
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    /* The "Neon" Glow */
+    text-shadow: 
+        0 0 5px #0ff,
+        0 0 10px #0ff,
+        0 0 20px #00ccff;
+    opacity: 0.8;
+    margin-bottom: 8px;
+    right: 10%;
+}
+
+@keyframes holo-float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); opacity: 0.7; }
+    50% { transform: translateY(-10px) rotate(2deg); opacity: 1; }
 }
